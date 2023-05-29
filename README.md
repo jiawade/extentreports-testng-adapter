@@ -54,24 +54,15 @@ and then: mvn clean test
 
 or
 ````java
-import com.aventstack.extentreports.ExtentReports;
-import com.aventstack.extentreports.ExtentTest;
-import io.github.adapter.Junit5ExtentReportListener;
-import org.junit.jupiter.api.Test;
+import io.github.adapter.TestngExtentReportListener;
+import org.testng.annotations.Test;
 
-public class JunitTest extends Junit5ExtentReportListener {
-    protected static ExtentTest test;
-    protected static ExtentReports extent;
 
+public class Subcase1 implements TestngExtentReportListener {
 
     @Test
-    public void case01() {
-        System.out.println("case one");
-    }
-
-    @Test
-    public void case02() {
-        System.out.println("case two");
+    public void aa(){
+        System.out.println("start");
     }
 
 }
