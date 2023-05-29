@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.github.jiawade</groupId>
-    <artifactId>extentreports-junit5-adapter</artifactId>
+    <artifactId>extentreports-testng-adapter</artifactId>
     <version>0.0.1</version>
 
     <name>extentreports-testng-adapter</name>
