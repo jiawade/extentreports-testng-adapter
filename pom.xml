@@ -6,7 +6,7 @@
 
     <groupId>io.github.jiawade</groupId>
     <artifactId>extentreports-testng-adapter</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
 
     <name>extentreports-testng-adapter</name>
     <description>extentreports-testng-adapter</description>
@@ -41,9 +41,8 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
-        <testng-version>7.7.1</testng-version>
+        <testng-version>7.1.0</testng-version>
         <extentreports-version>5.0.9</extentreports-version>
-        <testng-adapter-version>1.2.2</testng-adapter-version>
     </properties>
 
     <dependencies>
@@ -57,11 +56,6 @@
             <groupId>com.aventstack</groupId>
             <artifactId>extentreports</artifactId>
             <version>${extentreports-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.aventstack</groupId>
-            <artifactId>extentreports-testng-adapter</artifactId>
-            <version>${testng-adapter-version}</version>
         </dependency>
     </dependencies>
 

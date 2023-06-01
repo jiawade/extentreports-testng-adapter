@@ -33,21 +33,27 @@ extent.reporter.spark.viewConfigurer.viewOrder=dashboard,test,exception,category
 
 
 ## Usage Example
-add following plugin:
+#####1. create testng.xml file
+#####2.add following plugin:
 ````
 <plugin>
     <groupId>org.apache.maven.plugins</groupId>
     <artifactId>maven-surefire-plugin</artifactId>
-    <version>2.22.2</version>
+    <version>2.19.1</version>
     <configuration>
-        <includes>
-            <include>**/*.java</include>
-        </includes>
+        <testFailureIgnore>true</testFailureIgnore>
+        <argLine>
+            -Xmx1024m -XX:MaxPermSize=256m
+        </argLine>
+        <forkCount>1</forkCount>
+        <systemPropertyVariables>
+            <env>true</env>
+        </systemPropertyVariables>
+        <suiteXmlFiles>
+            <suiteXmlFile>testng.xml</suiteXmlFile>
+        </suiteXmlFiles>
+        <argLine>-Dfile.encoding=UTF-8</argLine>
     </configuration>
-</plugin>
-<plugin>
-    <artifactId>maven-failsafe-plugin</artifactId>
-    <version>2.22.2</version>
 </plugin>
 ````
 and then: mvn clean test
@@ -58,11 +64,11 @@ import io.github.adapter.TestngExtentReportListener;
 import org.testng.annotations.Test;
 
 
-public class Subcase1 implements TestngExtentReportListener {
+public class Test extends TestngExtentReportListener {
 
     @Test
     public void aa(){
-        System.out.println("start");
+        System.out.println("test");
     }
 
 }

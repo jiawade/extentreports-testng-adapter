@@ -19,7 +19,7 @@
         <timelineEnabled>true</timelineEnabled>
 
         <!-- offline report -->
-        <offlineMode>true</offlineMode>
+        <offlineMode>false</offlineMode>
 
         <!-- use thumbnails for base64 images -->
         <!-- this may slowdown viewing tests -->

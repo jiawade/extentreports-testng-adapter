@@ -2,7 +2,7 @@ import io.github.adapter.TestngExtentReportListener;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class Subcase2 implements TestngExtentReportListener {
+public class Subcase2 extends TestngExtentReportListener {
 
 
     @Test

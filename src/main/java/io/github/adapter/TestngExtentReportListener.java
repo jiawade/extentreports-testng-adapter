@@ -1,28 +1,37 @@
 package io.github.adapter;
 
 
-import com.aventstack.extentreports.service.ExtentTestManager;
-import com.aventstack.extentreports.testng.listener.ExtentITestListenerClassAdapter;
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+import io.github.adapter.listener.ExtentITestListenerClassAdapter;
+import io.github.adapter.service.ExtentService;
+import io.github.adapter.service.ExtentTestManager;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Listeners;
 
 @Listeners({ExtentITestListenerClassAdapter.class})
-public interface TestngExtentReportListener {
+public class TestngExtentReportListener {
+    protected transient static ExtentTest test;
+    protected transient static ExtentReports extent = ExtentService.getInstance();
+    protected transient static ExtentSparkReporter spark = ExtentService.getSpark();
+
 
     @AfterMethod
-    default void afterMethod(ITestResult result) {
-        String[] namePaht = result.getTestClass().getName().split("\\.");
-        String name=namePaht[namePaht.length-1];
+    protected void afterMethod(ITestResult result) {
+        test = ExtentTestManager.getTest(result);
+        String[] namePath = result.getTestClass().getName().split("\\.");
+        String name = namePath[namePath.length - 1];
         switch (result.getStatus()) {
             case ITestResult.FAILURE:
-                ExtentTestManager.getTest(result).assignCategory(name);
+                test.assignCategory(name);
                 break;
             case ITestResult.SKIP:
-                ExtentTestManager.getTest(result).assignCategory(name);
+                test.assignCategory(name);
                 break;
             default:
-                ExtentTestManager.getTest(result).assignCategory(name);
+                test.assignCategory(name);
                 break;
         }
     }
